@@ -1,0 +1,276 @@
+{
+  "rule": "Text is only black (#1A1A1A) or white. deep and base tiers take white text, soft and tint tiers take black text, for every hue. Never put text on a colour between base and soft.",
+  "tierUsage": {
+    "deep": "Large dark surfaces: nav, footer, title slides",
+    "base": "The brand colour: logo, buttons, badges, header bars",
+    "soft": "Secondary surfaces: table headers, tags, chart fills",
+    "tint": "Large light surfaces: callouts, cards, code blocks"
+  },
+  "colorSpace": "OKLCH; all hues share the lightness of each tier, hues 60 degrees apart from 251 (the Jülich blue hue)",
+  "coreBrandColors": [
+    {
+      "type": "Primary",
+      "name": "kProf Blue",
+      "hex": "#2971B7",
+      "usage": "Brand, header bars, icon body",
+      "ramp": {
+        "deep": {
+          "hex": "#114F87",
+          "oklch": "0.42 0.111 251",
+          "textOn": "white",
+          "contrast": 8.4
+        },
+        "base": {
+          "hex": "#2971B7",
+          "oklch": "0.54 0.130 251",
+          "textOn": "white",
+          "contrast": 5.1
+        },
+        "soft": {
+          "hex": "#B7D4F5",
+          "oklch": "0.86 0.055 251",
+          "textOn": "black",
+          "contrast": 11.4
+        },
+        "tint": {
+          "hex": "#E6F2FF",
+          "oklch": "0.955 0.022 251",
+          "textOn": "black",
+          "contrast": 15.3
+        }
+      }
+    },
+    {
+      "type": "Primary",
+      "name": "kProf Berry",
+      "hex": "#AC495C",
+      "usage": "Accent, icon wedge, highlight blocks",
+      "ramp": {
+        "deep": {
+          "hex": "#7D2E3E",
+          "oklch": "0.42 0.111 11",
+          "textOn": "white",
+          "contrast": 9.0
+        },
+        "base": {
+          "hex": "#AC495C",
+          "oklch": "0.54 0.130 11",
+          "textOn": "white",
+          "contrast": 5.4
+        },
+        "soft": {
+          "hex": "#F3C3C8",
+          "oklch": "0.86 0.055 11",
+          "textOn": "black",
+          "contrast": 11.1
+        },
+        "tint": {
+          "hex": "#FFEAEC",
+          "oklch": "0.955 0.022 11",
+          "textOn": "black",
+          "contrast": 15.1
+        }
+      }
+    },
+    {
+      "type": "Primary",
+      "name": "kProf Olive",
+      "hex": "#537D1F",
+      "usage": "Secondary blocks",
+      "ramp": {
+        "deep": {
+          "hex": "#375806",
+          "oklch": "0.42 0.111 131",
+          "textOn": "white",
+          "contrast": 8.2
+        },
+        "base": {
+          "hex": "#537D1F",
+          "oklch": "0.54 0.130 131",
+          "textOn": "white",
+          "contrast": 4.9
+        },
+        "soft": {
+          "hex": "#C5D9B4",
+          "oklch": "0.86 0.055 131",
+          "textOn": "black",
+          "contrast": 11.6
+        },
+        "tint": {
+          "hex": "#EBF3E4",
+          "oklch": "0.955 0.022 131",
+          "textOn": "black",
+          "contrast": 15.3
+        }
+      }
+    },
+    {
+      "type": "Secondary",
+      "name": "kProf Ochre",
+      "hex": "#90652E",
+      "usage": "Accent blocks (complement of Blue)",
+      "ramp": {
+        "deep": {
+          "hex": "#674517",
+          "oklch": "0.42 0.076 71",
+          "textOn": "white",
+          "contrast": 8.6
+        },
+        "base": {
+          "hex": "#90652E",
+          "oklch": "0.54 0.090 71",
+          "textOn": "white",
+          "contrast": 5.1
+        },
+        "soft": {
+          "hex": "#E9CCAA",
+          "oklch": "0.86 0.055 71",
+          "textOn": "black",
+          "contrast": 11.3
+        },
+        "tint": {
+          "hex": "#FAEEE1",
+          "oklch": "0.955 0.022 71",
+          "textOn": "black",
+          "contrast": 15.2
+        }
+      }
+    },
+    {
+      "type": "Secondary",
+      "name": "kProf Plum",
+      "hex": "#7F5F95",
+      "usage": "Secondary accent blocks (complement of Olive)",
+      "ramp": {
+        "deep": {
+          "hex": "#5A406C",
+          "oklch": "0.42 0.076 311",
+          "textOn": "white",
+          "contrast": 8.8
+        },
+        "base": {
+          "hex": "#7F5F95",
+          "oklch": "0.54 0.090 311",
+          "textOn": "white",
+          "contrast": 5.3
+        },
+        "soft": {
+          "hex": "#DDC7EC",
+          "oklch": "0.86 0.055 311",
+          "textOn": "black",
+          "contrast": 11.2
+        },
+        "tint": {
+          "hex": "#F5ECFB",
+          "oklch": "0.955 0.022 311",
+          "textOn": "black",
+          "contrast": 15.1
+        }
+      }
+    },
+    {
+      "type": "Secondary",
+      "name": "kProf Teal",
+      "hex": "#0F7F7B",
+      "usage": "Alternative accent blocks (complement of Berry)",
+      "ramp": {
+        "deep": {
+          "hex": "#035956",
+          "oklch": "0.42 0.071 191",
+          "textOn": "white",
+          "contrast": 8.2
+        },
+        "base": {
+          "hex": "#0F7F7B",
+          "oklch": "0.54 0.090 191",
+          "textOn": "white",
+          "contrast": 4.8
+        },
+        "soft": {
+          "hex": "#A8DDD9",
+          "oklch": "0.86 0.055 191",
+          "textOn": "black",
+          "contrast": 11.6
+        },
+        "tint": {
+          "hex": "#E0F5F3",
+          "oklch": "0.955 0.022 191",
+          "textOn": "black",
+          "contrast": 15.4
+        }
+      }
+    },
+    {
+      "type": "Neutral",
+      "name": "kProf Black",
+      "hex": "#1A1A1A",
+      "usage": "All text on light surfaces"
+    },
+    {
+      "type": "Neutral",
+      "name": "kProf White",
+      "hex": "#FFFFFF",
+      "usage": "All text on dark surfaces; base background"
+    },
+    {
+      "type": "Neutral",
+      "name": "Black",
+      "hex": "#000000",
+      "usage": "Print Black"
+    }
+  ],
+  "functionalAndFeedbackColors": [
+    {
+      "type": "Functional",
+      "name": "kProf Success Green",
+      "hex": "#2F7434",
+      "usage": "Icon, border and stripe (text stays black)"
+    },
+    {
+      "type": "Functional BG",
+      "name": "Success Green Tint",
+      "hex": "#E4F6E4",
+      "usage": "Callout background, black text",
+      "contrastBlackText": 15.4
+    },
+    {
+      "type": "Functional",
+      "name": "kProf Warning Amber",
+      "hex": "#845A0F",
+      "usage": "Icon, border and stripe (text stays black)"
+    },
+    {
+      "type": "Functional BG",
+      "name": "Warning Amber Tint",
+      "hex": "#FCEEDB",
+      "usage": "Callout background, black text",
+      "contrastBlackText": 15.2
+    },
+    {
+      "type": "Functional",
+      "name": "kProf Error Red",
+      "hex": "#9C433F",
+      "usage": "Icon, border and stripe (text stays black)"
+    },
+    {
+      "type": "Functional BG",
+      "name": "Error Red Tint",
+      "hex": "#FFE9E6",
+      "usage": "Callout background, black text",
+      "contrastBlackText": 15.0
+    },
+    {
+      "type": "Functional",
+      "name": "kProf Info Blue",
+      "hex": "#0F68A2",
+      "usage": "Icon, border and stripe (text stays black)"
+    },
+    {
+      "type": "Functional BG",
+      "name": "Info Blue Tint",
+      "hex": "#E0F3FF",
+      "usage": "Callout background, black text",
+      "contrastBlackText": 15.3
+    }
+  ]
+}
