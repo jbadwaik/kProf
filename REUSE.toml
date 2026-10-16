@@ -1,13 +1,28 @@
 version = 1
 
+# JSON has no comment syntax, so these files cannot carry an SPDX header.
 [[annotations]]
-path = ["**"]
+path = [
+  "CMakePresets.json",
+  "share/kprof/brandkit/source/palette.json",
+]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 kprof developers"
 SPDX-License-Identifier = "Apache-2.0"
 
+# Marker file whose content is read as plain text.
 [[annotations]]
-path = ["share/kprof/brandkit/source/font.*"]
+path = ["cmake/besa/.besa-cmake-module"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 besa developers"
+SPDX-License-Identifier = "Apache-2.0"
+
+# Binary font files, redistributed unmodified under the OFL.
+[[annotations]]
+path = [
+  "share/kprof/brandkit/source/font.otf",
+  "share/kprof/brandkit/source/font.ttf",
+]
 precedence = "override"
 SPDX-FileCopyrightText = "2020 The Space Grotesk Project Authors (https://github.com/floriankarsten/space-grotesk)"
 SPDX-License-Identifier = "OFL-1.1"

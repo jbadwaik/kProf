@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 kprof developers
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Reference
 
 The generated C++ API documentation is available directly from the reference section:

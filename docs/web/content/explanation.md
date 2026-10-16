@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 kprof developers
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Explanation
 
 kprof separates project code, tests, build support, and documentation so that each concern has a clear place in the repository.
