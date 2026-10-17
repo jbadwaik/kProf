@@ -60,15 +60,19 @@ endfunction()
 
 # Add a semantic unit without the library-only validation of besa_add_directory.
 #   besa_add_subdirectory(DIRECTORY <path> TYPE <type> [LIBRARY <target>]
-#                         [CONDITION <feature-space>] [ARGS ...])
+#                         [CONDITION <feature-space>] [IF <cmake-condition>...]
+#                         [ARGS ...])
 # The bin type creates standalone executables and leaves source-language
 # inference to CMake. Other types require LIBRARY and use TYPE to enable a
 # language; file extensions do not determine semantic types.
 # A generated type invokes its registered callback before source discovery.
 macro(besa_add_subdirectory)
   _besa_require_config_complete("besa_add_subdirectory")
-  cmake_parse_arguments(BESA_SUBDIR "" "DIRECTORY;TYPE;CONDITION;LIBRARY" "ARGS" ${ARGN})
+  cmake_parse_arguments(BESA_SUBDIR "" "DIRECTORY;TYPE;CONDITION;LIBRARY" "ARGS;IF" ${ARGN})
   _besa_require_no_unparsed("besa_add_subdirectory" "${BESA_SUBDIR_UNPARSED_ARGUMENTS}")
+  if("IF" IN_LIST BESA_SUBDIR_KEYWORDS_MISSING_VALUES)
+    _besa_fatal("besa_add_subdirectory" "IF requires a CMake condition")
+  endif()
   _besa_require_value("besa_add_subdirectory" "DIRECTORY" "${BESA_SUBDIR_DIRECTORY}")
   _besa_require_value("besa_add_subdirectory" "TYPE" "${BESA_SUBDIR_TYPE}")
   _besa_subdir_initialize_types()
@@ -81,6 +85,11 @@ macro(besa_add_subdirectory)
   if(BESA_SUBDIR_CONDITION)
     get_property(_besa_features GLOBAL PROPERTY BESA_ENABLED_FEATURES)
     _besa_keyso_matches("${BESA_SUBDIR_CONDITION}" "${_besa_features}" _besa_selected)
+  endif()
+  if(_besa_selected AND DEFINED BESA_SUBDIR_IF)
+    if(NOT (${BESA_SUBDIR_IF}))
+      set(_besa_selected FALSE)
+    endif()
   endif()
 
   if(_besa_selected)
@@ -147,19 +156,26 @@ macro(besa_add_subdirectory)
   unset(BESA_SUBDIR_DIRECTORY)
   unset(BESA_SUBDIR_TYPE)
   unset(BESA_SUBDIR_CONDITION)
+  unset(BESA_SUBDIR_IF)
   unset(BESA_SUBDIR_ARGS)
 endmacro()
 
 # Attach a semantic ROOT directory to a previously created library.
 #   besa_add_directory(LIBRARY <target> ROOT <path> TYPE <type>
-#                      [CONDITION <feature-space>] [ARGS ...])
+#                      [CONDITION <feature-space>] [IF <cmake-condition>...]
+#                      [ARGS ...])
 # Each call adds lib/ implementations, public include/ headers, and optional
 # C++ module/ or Fortran mod/ files. Calls can target different libraries.
-# CONDITION is matched against the finalized feature configuration.
+# CONDITION matches the finalized feature configuration (Keyso).
+# IF evaluates a CMake condition against the target platform/configuration.
+# Both conditions must match when supplied.
 macro(besa_add_directory)
   _besa_require_config_complete("besa_add_directory")
-  cmake_parse_arguments(BESA_DIRECTORY "" "LIBRARY;ROOT;TYPE;CONDITION" "ARGS" ${ARGN})
+  cmake_parse_arguments(BESA_DIRECTORY "" "LIBRARY;ROOT;TYPE;CONDITION" "ARGS;IF" ${ARGN})
   _besa_require_no_unparsed("besa_add_directory" "${BESA_DIRECTORY_UNPARSED_ARGUMENTS}")
+  if("IF" IN_LIST BESA_DIRECTORY_KEYWORDS_MISSING_VALUES)
+    _besa_fatal("besa_add_directory" "IF requires a CMake condition")
+  endif()
   foreach(_required LIBRARY ROOT TYPE)
     _besa_require_value("besa_add_directory" "${_required}" "${BESA_DIRECTORY_${_required}}")
   endforeach()
@@ -189,6 +205,9 @@ macro(besa_add_directory)
   if(BESA_DIRECTORY_CONDITION)
     list(APPEND _besa_directory_arguments CONDITION "${BESA_DIRECTORY_CONDITION}")
   endif()
+  if(DEFINED BESA_DIRECTORY_IF)
+    list(APPEND _besa_directory_arguments IF ${BESA_DIRECTORY_IF})
+  endif()
   if(BESA_DIRECTORY_ARGS)
     list(APPEND _besa_directory_arguments ARGS ${BESA_DIRECTORY_ARGS})
   endif()
@@ -202,6 +221,7 @@ macro(besa_add_directory)
   unset(BESA_DIRECTORY_ROOT)
   unset(BESA_DIRECTORY_TYPE)
   unset(BESA_DIRECTORY_CONDITION)
+  unset(BESA_DIRECTORY_IF)
   unset(BESA_DIRECTORY_ARGS)
 endmacro()
 
